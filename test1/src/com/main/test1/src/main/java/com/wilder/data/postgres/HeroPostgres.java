@@ -26,7 +26,7 @@ public class HeroPostgres implements HeroDAO {
 		try (Connection conn = connUtil.getConnection()){
 			conn.setAutoCommit(false);
 			String[] keys = {"id"};
-			String sql="insert into battleduel.hero"
+			String sql="insert into public.hero"
 					+ " (name,"
 					+ " type,"
 					+ " attack,"
