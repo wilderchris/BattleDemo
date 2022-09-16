@@ -22,6 +22,7 @@ public class ConnectionUtil {
 				InputStream propFileStream = ConnectionUtil.class.
 					getClassLoader().getResourceAsStream("database.properties");
 					dbProperties.load(propFileStream);
+					System.out.println(dbProperties.entrySet());
 			}catch (IOException ie){
 				ie.printStackTrace();
 			}
@@ -40,11 +41,17 @@ public class ConnectionUtil {
 		public Connection getConnection() {
 		Connection conn = null;
 		try {
-			Class.forName(dbProperties.getProperty("drv"));
+//			Class.forName(dbProperties.getProperty("drv"));
+//			conn = DriverManager.getConnection(
+//					dbProperties.getProperty("db"),
+//					dbProperties.getProperty("username"),
+//					dbProperties.getProperty("password"));
+			
+			Class.forName("org.postgresql.Driver");
 			conn = DriverManager.getConnection(
-					dbProperties.getProperty("db"),
-					dbProperties.getProperty("username"),
-					dbProperties.getProperty("password"));
+					"jdbc:postgresql://localhost:5432/postgres?currentSchema=public",
+					"postgres",
+					"tarheel1");
 		}catch(SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -2,23 +2,21 @@ package com.wilder.bean;
 
 import java.util.Objects;
 
-public class Hero {
+public class Type {
 
 	private int id;
-	private String name;
 	private String type;
 	private int attack;
 	private int defense;
 	private int magic;
 	private int health;
 
-	public Hero() {
+	public Type() {
 
 	}
 
-	public Hero(int id, String name, String type, int attack, int defense, int magic, int health) {
+	public Type(int id, String type, int attack, int defense, int magic, int health) {
 		this.id = id;
-		this.name = name;
 		this.type = type;
 		this.attack = attack;
 		this.defense = defense;
@@ -35,13 +33,6 @@ public class Hero {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getType() {
 		return type;
@@ -85,13 +76,13 @@ public class Hero {
 
 	@Override
 	public String toString() {
-		return "Hero [name=" + name + ", type=" + type + ", attack=" + attack + ", defense=" + defense
-				+ ", magic=" + magic + ", health=" + health + "]";
+		return "Type [id=" + id + ", type=" + type + ", attack=" + attack + ", defense=" + defense
+				+ ", magic=" + magic + ", health=" + health + "]\n";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(attack, defense, health, id, magic, name, type);
+		return Objects.hash(attack, defense, health, id, magic, type);
 	}
 
 	@Override
@@ -102,11 +93,12 @@ public class Hero {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Hero other = (Hero) obj;
+		Type other = (Type) obj;
 		return attack == other.attack && defense == other.defense && health == other.health && id == other.id
-				&& magic == other.magic && Objects.equals(name, other.name) && Objects.equals(type, other.type);
+				&& magic == other.magic && Objects.equals(type, other.type);
 	}
 
+	
 	
 
 }
